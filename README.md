@@ -90,3 +90,7 @@ You should be able to click around and watch the segments and variables update.
 - Route partial segments through, like /foo{{bar}}/ => /category-{{bar}}/
 - Run common queries like category_id on tokens before passing them on to new ones (example: {{category from=cat_name to=cat_id}} would take the cat name, but return te id 
 
+## Testing
+
+Testing is done with [Testee](http://experienceinternet.co.uk/software/testee/docs/). 
+After you install the module, it will automatically notice Freeway tests (which are stored in /test). You should be able to run tests from Testee.

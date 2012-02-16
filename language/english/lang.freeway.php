@@ -1,12 +1,6 @@
 <?php
 
 $lang = array(
-	'routes' => '<h4>Routes:</h4>
-									<p style="font-weight: normal">
-										Format: {{match}}/this/uri => route/destination/after/{{match}}
-									</p>
-									<p style="font-weight: normal">
-										If you leave this field blank, EE will attempt to load routes from the routes.php file inside third_party/reeroute/
-									</p>'
-	
+	'routes' => 'Routes<br /><span style="font-weight: normal">Format: <code>{{match}}/this/uri => route/destination/after/{{match}}</code></span>',
+	'routes_file' => 'Path to routes file<br /><span style="font-weight: normal">Relative to your site\'s index.php file, no leading slash</span>',
 );

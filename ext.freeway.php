@@ -3,17 +3,13 @@
 /**
  * Freeway Extension Class for ExpressionEngine 2
  *
- * @package		Freeway
- * @author		Doug Avery <doug.avery@viget.com>
+ * @package	Freeway
+ * @author	Doug Avery <doug.avery@viget.com>
+ * @author	Modifications by eecoder <http://eecoder.com/>
  *
  */
-
-	/* 
-
-	*/
-
 class Freeway_ext {
-
+	
 	/**
 	 * Required vars
 	 */
@@ -30,7 +26,9 @@ class Freeway_ext {
 	var $settings_default = array();
 
 	function settings(){
-		$settings['routes'] = array('t', null, '');
+		$settings['routes'] = array('t', '', '');
+		$settings['routes_file'] = array('i', '', SYSDIR.'/expressionengine/third_party/freeway/routes.php');
+		
 		return $settings;
 	}
 
@@ -71,6 +69,14 @@ class Freeway_ext {
 				$route_pair = explode(' => ', $route);
 				$this->routes[$route_pair[0]] = $route_pair[1];
 			}
+		}
+		
+		// load from file
+		if( ! empty($this->settings['routes_file']) && file_exists(FCPATH.$this->settings['routes_file']))
+		{
+			$routes_from_file = (array) @include(FCPATH.$this->settings['routes_file']);
+			
+			$this->routes = array_merge($this->routes, $routes_from_file);
 		}
 
 		return count($this->routes) > 0;
@@ -285,5 +291,3 @@ class Freeway_ext {
 	}
 
 }
-
-?>
